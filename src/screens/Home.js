@@ -31,16 +31,16 @@ export default class Home extends Component<Props> {
   }
 
   populateData() {
-    this.setState({data: [
-      {
-        id: 1,
-        name: 'Reed'
-      },
-      {
-        id: 2,
-        name: 'Elon'
-      }
-    ]})
+    fetch('https:api//api.myjson.com/bins/bphek')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      alert('respJson')
+      this.setState({data: responseJson.Birthdays})
+      return responseJson
+    })
+    .catch(error) => {
+      console.log(error);
+    }
   }
 
   _renderItem = ({item}) => (
